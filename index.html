@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="shortcut icon" href="assets/Logo.png" type="image/x-icon">
     <style>
-        .active{
+        .active {
             background-color: #FF1F3D;
             color: white;
         }
@@ -21,8 +21,8 @@
         <nav class="flex justify-between py-5">
             <img src="assets/Logo.png" alt="">
             <label class="input border-none">
-                <input id="search" type="search" required placeholder="Search"/>
-              </label>
+                <input id="search" type="search" required placeholder="Search" />
+            </label>
             <button class="btn bg-[#FF1F3D] text-white">Sort by view</button>
         </nav>
     </header>
@@ -30,12 +30,32 @@
         <div>
             <button id="btn-all" onclick="loadVideos()" class="btn ">All</button>
         </div>
-       
+
 
     </section>
     <section id="videosContainer" class="grid grid-cols-4 gap-2 mt-5 mx-2">
-       
+
     </section>
+    <section id="modalContainer">
+        <dialog id="video_details" class="modal ">
+            <div class="modal-box">
+                <div id="modal-details" class="flex flex-col items-center">
+
+                </div>
+
+
+                <div class="modal-action">
+                    <form method="dialog">
+                        <button class="btn">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
+    </section>
+    <section id="loader" class="flex justify-center h-screen place-items-center hidden">
+        <span class="loading loading-ring loading-xl"></span>
+    </section>
+
 
     <script src="./script/app.js"></script>
 </body>

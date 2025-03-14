@@ -25,6 +25,7 @@ const removeActiveClass = () => {
 }
 
 const loadVideos = (searchText = '') => {
+   showLoader()
     fetch('https://openapi.programming-hero.com/api/phero-tube/videos?title=' + searchText)
         .then(res => res.json())
         .then(data => {
@@ -37,6 +38,7 @@ const loadVideos = (searchText = '') => {
 
 // load videos by categories
 const loadCategoryVideos = (id) => {
+    showLoader()
     const url = `https://openapi.programming-hero.com/api/phero-tube/category/${id}`;
     fetch(url)
         .then(res => res.json())
@@ -49,15 +51,42 @@ const loadCategoryVideos = (id) => {
         })
 }
 
+const loadVideoDetails = (videoId) => {
+    showLoader()
+    const url = `https://openapi.programming-hero.com/api/phero-tube/video/${videoId}`;
+    fetch(url).then(res => res.json()).then(data => displayVideoDetails(data.video))
+}
+
+
+
+
+function displayVideoDetails(video) {
+    hideLoader()
+  
+    document.getElementById('modal-details').innerHTML = `
+    <h2 class="font-medium mb-4 text-center text-3xl">${video.title}</h2>
+     <img class="rounded-md object-cover w-full" src="${video.thumbnail}" alt="">
+     <p class="mt-2"><span class="font-bold ">Author: </span>${video.authors[0].profile_name}</p>
+     <p class="mt-2"><span class="font-bold ">Views: </span>${video.others.views}</p>
+    `
+
+    video_details.showModal();
+   hi
+}
+
 
 const displayVideos = (videos) => {
+    hideLoader()
     const videosContainer = document.getElementById('videosContainer');
+    if (videos.length === 0) {
+        return;
+    }
     videosContainer.innerHTML = '';
     for (let video of videos) {
 
         let div = document.createElement('div');
         div.innerHTML = `
-         <div class="card  shadow-sm">
+         <div onclick="loadVideoDetails('${video.video_id}')"  class="card  shadow-sm">
             <figure class="relative">
                 <img class="w-[375px] h-[200px] object-cover" src="${video.thumbnail}" alt="videos" />
                 <span class="bg-black text-slate-50 px-2 rounded-lg text-sm absolute bottom-2 right-2 ">3hrs 56 min ago</span>
@@ -83,12 +112,24 @@ const displayVideos = (videos) => {
         
         
         `
-        videosContainer.appendChild(div)
+        videosContainer.appendChild(div);
+
+
     }
 }
+
 document.getElementById("search").addEventListener('keyup', (e) => {
     let searchText = e.target.value;
     loadVideos(searchText);
 })
-loadVideos()
+const showLoader = () => {
+    document.getElementById('loader').classList.remove('hidden');
+    document.getElementById('videosContainer').classList.add('hidden')
+}
+const hideLoader = () => {
+    document.getElementById('loader').classList.add('hidden');
+    document.getElementById('videosContainer').classList.remove('hidden')
+}
+
+loadVideos();
 loadCategory();
