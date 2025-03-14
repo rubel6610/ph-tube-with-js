@@ -79,6 +79,7 @@ const displayVideos = (videos) => {
     hideLoader()
     const videosContainer = document.getElementById('videosContainer');
     if (videos.length === 0) {
+        
         return;
     }
     videosContainer.innerHTML = '';

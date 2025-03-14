@@ -18,12 +18,12 @@
 
 <body>
     <header class="container mx-auto">
-        <nav class="flex justify-between py-5">
-            <img src="assets/Logo.png" alt="">
+        <nav class="flex justify-around py-5">
+            <img class="md:w-60 w-25" src="assets/Logo.png" alt="">
             <label class="input border-none">
                 <input id="search" type="search" required placeholder="Search" />
             </label>
-            <button class="btn bg-[#FF1F3D] text-white">Sort by view</button>
+            <button class="btn bg-[#FF1F3D] text-white hidden md:flex">Sort by view</button>
         </nav>
     </header>
     <section id="categoryContainer" class="flex justify-center gap-2 ">
@@ -33,7 +33,7 @@
 
 
     </section>
-    <section id="videosContainer" class="grid grid-cols-4 gap-2 mt-5 mx-2">
+    <section id="videosContainer" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mt-5 mx-2">
 
     </section>
     <section id="modalContainer">
