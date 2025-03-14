@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PH TUBE</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="shortcut icon" href="assets/Logo.png" type="image/x-icon">
+    <style>
+        .active{
+            background-color: #FF1F3D;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="container mx-auto">
+        <nav class="flex justify-between py-5">
+            <img src="assets/Logo.png" alt="">
+            <label class="input border-none">
+                <input id="search" type="search" required placeholder="Search"/>
+              </label>
+            <button class="btn bg-[#FF1F3D] text-white">Sort by view</button>
+        </nav>
+    </header>
+    <section id="categoryContainer" class="flex justify-center gap-2 ">
+        <div>
+            <button id="btn-all" onclick="loadVideos()" class="btn ">All</button>
+        </div>
+       
+
+    </section>
+    <section id="videosContainer" class="grid grid-cols-4 gap-2 mt-5 mx-2">
+       
+    </section>
+
+    <script src="./script/app.js"></script>
+</body>
+
+</html>
