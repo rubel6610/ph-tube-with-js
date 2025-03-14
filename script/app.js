@@ -87,7 +87,7 @@ const displayVideos = (videos) => {
 
         let div = document.createElement('div');
         div.innerHTML = `
-         <div onclick="loadVideoDetails('${video.video_id}')"  class="card  shadow-sm">
+         <div onclick="loadVideoDetails('${video.video_id}')"  class="card  shadow-sm max-h-80">
             <figure class="relative">
                 <img class="w-[375px] h-[200px] object-cover" src="${video.thumbnail}" alt="videos" />
                 <span class="bg-black text-slate-50 px-2 rounded-lg text-sm absolute bottom-2 right-2 ">3hrs 56 min ago</span>
